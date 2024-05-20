@@ -273,3 +273,24 @@ E  u     s  o  u     o     c  a  m  i  n  h  o     a     v  e  r  d  a  d  e    
 
 - https://www.youtube.com/@kutova. 
     - Acessado em 19/05/2024
+
+- https://medium.com/@davidsonbrsilva/compress%C3%A3o-de-dados-pelo-algoritmo-de-huffman-5e04bc437d77. 
+    - Acessado em 19/05/2024
+
+- https://www.maxwell.vrac.puc-rio.br/9932/9932_5.PDF. 
+    - Acessado em 19/05/2024
+
+- http://www.inf.ufes.br/~pdcosta/ensino/2010-1-estruturas-de-dados/material/CodificacaoHuffman.pdf. 
+    - Acessado em 19/05/2024
+
+- https://www.ime.usp.br/~pf/analise_de_algoritmos/aulas/huffman.html#:~:text=Uma%20%C3%A1rvore%20de%20Huffman%20%C3%A9,Seja%20S%20um%20conjunto%20qualquer.. 
+    - Acessado em 19/05/2024
+
+- https://www.cs.auckland.ac.nz/software/AlgAnim/huffman.html. 
+    - Acessado em 19/05/2024
+
+-https://www2.cs.sfu.ca/CourseCentral/365/li/squeeze/Huffman.html
+    - Acessado em 19/05/2024
+
+-https://pt.wikipedia.org/wiki/Codifica%C3%A7%C3%A3o_de_Huffman
+    - Acessado em 19/05/2024
