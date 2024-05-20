@@ -11,7 +11,7 @@
 - Repositório do GitHub: https://github.com/programadormovel/ep2.git
 
     # Exercício-Programa 2
-Compactação de arquivos com o algoritmo guloso de Human &nbsp;&nbsp;
+Compactação de arquivos com o algoritmo guloso de Huffman &nbsp;&nbsp;
 
 Uma aplicação interessante de árvore binária é a compactação de arquivos usando os chamados códigos de Human. Os códigos de Human são códigos binários (atribuídos, por exemplo, a caracteres em um texto) de comprimentos variados que são determinados a partir da frequência de uso de um determinado caractere. &nbsp;&nbsp;
 
