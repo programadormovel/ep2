@@ -75,7 +75,7 @@ A codicação dos caracteres é realizada,associando-se 0 às arestas da árvore
  `s': 1110
  `t': 1111
 
-![Árvore de Huffman](./hufmann.png)
+![Árvore de Huffman](https://github.com/programadormovel/ep2/blob/main/hufmann.png)
 
  Figura 1: Árvore de Human
  
