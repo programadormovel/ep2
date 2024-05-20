@@ -1,4 +1,3 @@
-
 class No:
     def __init__(self):
         self.chave = None
@@ -51,7 +50,7 @@ def preencher_lista(lista_frequencia, lista: ListaNos):
     lista_criada = ListaNos()
     for indice in range(0, 256):
         novo_no = No()
-        if(int(lista_frequencia[indice]) > 0):
+        if(int(lista_frequencia[indice]) > 0 and lista_frequencia[indice] != '\n'):
             novo_no.chave = indice
             novo_no.frequencia = lista_frequencia[indice]
             novo_no.direita = None
@@ -71,7 +70,6 @@ def imprimir_lista_frequencia(lista_frequencia):
     for n in range(0, 256):
         if(lista_frequencia[n] > 0):
             print("\t%d = %d = %c\n" % (n, lista_frequencia[n], n))
-        # print("\t%d = %d = %c\n" % (n, lista_frequencia[n], n))
         
 def remover_no_do_inicio_da_lista(lista: ListaNos):
     no_auxiliar = None
@@ -144,13 +142,7 @@ def gerar_dicionario(dicionario, raiz, caminho, colunas):
         direita = direita + "1"
         gerar_dicionario(dicionario, raiz.esquerda, esquerda, colunas)
         gerar_dicionario(dicionario, raiz.direita, direita, colunas)
-        
-def imprime_dicionario(dicionario):
-    print("\n\tDicionário:\n")
-    for indice in range(0, 255):
-        if(len(dicionario[indice]) > 0):
-            print("\t%3d: %s\n" % (indice, dicionario[indice]))
-            
+                   
 def calcula_tamanho_da_palavra(dicionario, texto):
     tamanho = 0
     for indice, valor in enumerate(texto):
@@ -189,6 +181,12 @@ def decodificar(texto, raiz: No):
         indice += 1
     return decodificado
 
+def menu_interativo():
+    print('Exercício Programa 2 - Árvore de Huffman')
+    print('Tecle uma opção desejada (0 - para parar o programa):')
+    print('1 - Compactar arquivo input.txt')
+    print('2 - Descompactar arquivo zip.txt')
+
 if __name__ == '__main__':
     
     texto = "Vamos montar uma arvore de Huffman"
@@ -199,28 +197,71 @@ if __name__ == '__main__':
     codificado = ''
     decodificado = ''
 
-    lista_frequencia = inicializa_lista_frequencia_com_zeros([])
-    lista_frequencia = preenche_lista_frequencia(texto, lista_frequencia)
-    imprimir_lista_frequencia(lista_frequencia=lista_frequencia)
+    condicao_de_parada = False
     
-    lista = criacao_da_lista(lista)
-    lista = preencher_lista(lista_frequencia=lista_frequencia, lista=lista)
-    imprimir_lista(lista)
+    while(not condicao_de_parada):
+        menu_interativo()
+        opcao_digitada = input('Digite aqui a sua opção:')
+        if(opcao_digitada=='0'): 
+            condicao_de_parada = True
+        elif(opcao_digitada=='1'):
+            with open("./input.txt", 'r', encoding='utf8') as frase:
+                for texto in frase:
+                    nome_arquivo = "zip.txt"
+                    lista_frequencia = inicializa_lista_frequencia_com_zeros([])
+                    lista_frequencia = preenche_lista_frequencia(texto, lista_frequencia)
+                    print("\n\t1. Lista de frequência de caracteres no texto:\n")
+                    imprimir_lista_frequencia(lista_frequencia=lista_frequencia)
+                    lista_persistida = lista_frequencia
+                    
+                    lista = criacao_da_lista(lista)
+                    lista = preencher_lista(lista_frequencia=lista_frequencia, lista=lista)
+                    # imprimir_lista(lista)
+                    
+                    arvore = montar_arvore(lista)
+                    print("\n\t2. Árvore de Huffman\n")
+                    imprimir_arvore(arvore, 0)
+                    
+                    colunas = altura_arvore(arvore) + 1
+                    dicionario = aloca_dicionario(colunas)
+                    gerar_dicionario(dicionario, arvore, "", colunas)
+                    
+                    codificado = codificar(dicionario, texto)
+                    print(f"\n\t3. Texto codificado:\n")
+                    print(*codificado)
+                    
+                with open(nome_arquivo, "w") as arquivo:
+                    texto_codificado = [arquivo.write(str(item)) for item in lista_persistida]
+                    # texto_codificado = [arquivo.write(str(item)) for item in dicionario]
+                    arquivo.write("\n")
+                    texto_codificado = [arquivo.write(str(item)) for item in codificado]
+                     
+        elif(opcao_digitada=='2'):
+            lista_frequencia = []
+            dicionario = []
+            lista = ListaNos()
+            with open("./zip.txt", 'r', encoding='utf8') as arquivo_codificado: 
+                for texto_codificado in arquivo_codificado:
+                    if(len(lista_frequencia) == 0):
+                        lista_frequencia = list(texto_codificado[:256])
+                        lista_frequencia_inteiro = [int(item) for item in lista_frequencia]
+                        lista = criacao_da_lista(lista)
+                        lista = preencher_lista(lista_frequencia=lista_frequencia_inteiro, lista=lista)
+                        arvore = montar_arvore(lista)
+                        continue
+                    else:
+                        nome_arquivo = "zip_decodificado.txt"
+                        decodificado = decodificar(list(texto_codificado), arvore)
+                        print("\n\tTexto decodificado: \n")
+                        print(*decodificado)
+            
+                with open(nome_arquivo, "w") as arquivo:
+                    texto_decodificado = [arquivo.write(str(item)) for item in decodificado]
+                   
     
-    arvore = montar_arvore(lista)
-    print("\n\tÁrvore de Huffman\n")
-    imprimir_arvore(arvore, 0)
     
-    colunas = altura_arvore(arvore) + 1
-    dicionario = aloca_dicionario(colunas)
-    gerar_dicionario(dicionario, arvore, "", colunas)
-    imprime_dicionario(dicionario)
     
-    codificado = codificar(dicionario, texto)
-    print("\n\tTexto codificado: %s\n" % (codificado))
-    print(*codificado)
+
     
-    decodificado = decodificar(codificado, arvore)
-    print("\n\tTexto decodificado: %s\n" % (decodificado))
-    print(*decodificado)
+
     
