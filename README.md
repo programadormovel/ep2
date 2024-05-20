@@ -6,40 +6,40 @@
     Adriano Domingues - RM: 43830
 
 # Exercício Problema 2 - Árvore de Huffman
-- Endereço do vídeo de apresentação: 
+- Endereço do vídeo de apresentação: https://youtu.be/qQXVzqs-b64?si=q6onEpm83UKNmre_
 
 - Repositório do GitHub: https://github.com/programadormovel/ep2.git
 
     # Exercício-Programa 2
 Compactação de arquivos com o algoritmo guloso de Huffman &nbsp;&nbsp;
 
-Uma aplicação interessante de árvore binária é a compactação de arquivos usando os chamados códigos de Human. Os códigos de Human são códigos binários (atribuídos, por exemplo, a caracteres em um texto) de comprimentos variados que são determinados a partir da frequência de uso de um determinado caractere. &nbsp;&nbsp;
+Uma aplicação interessante de árvore binária é a compactação de arquivos usando os chamados códigos de Huffman. Os códigos de Huffman são códigos binários (atribuídos, por exemplo, a caracteres em um texto) de comprimentos variados que são determinados a partir da frequência de uso de um determinado caractere. &nbsp;&nbsp;
 
-A ideia central é associar números binários com menos bits aos caracteres mais usados em um texto, possibilitando a sua compactação. O algoritmo de compactação usando códigos de Human tem três fases:
+A ideia central é associar números binários com menos bits aos caracteres mais usados em um texto, possibilitando a sua compactação. O algoritmo de compactação usando códigos de Huffman tem três fases:
 
  (1) Cálculo da frequência de cada caractere no texto;
 
  (2) Execução do algoritmo de Huffman para construção de uma árvore binária
- (árvore de Human);
+ (árvore de Huffman);
 
- (3) Codi cação propriamente dita.
+ (3) Codicação propriamente dita.
 
  No algoritmo de descompactação usando os códigos de Huffman são necessárias duas fases:
 
  (1) Leitura e reconstrução da árvore de Huffman;
 
- (2) Decodi cação propriamente dita.
+ (2) Decodicação propriamente dita.
 
 Para facilitar nosso trabalho podemos considerar pseudo-bits (caracteres 0s e 1s em vez de bits 0s e 1s).
 
-O algoritmo de Human tem como propósito a construção de uma árvore binária baseada na frequência do uso de letras em um texto. Como exemplo, consideremos o texto a seguir.
+O algoritmo de Huffman tem como propósito a construção de uma árvore binária baseada na frequência do uso de letras em um texto. Como exemplo, consideremos o texto a seguir.
 
  GNU's Not Unix
  
 Temos que as frequências dos caracteres do texto apresentado como exemplo são:
  `\n': 1, ` ': 2, ` : 1, `G': 1, `N': 2, `U': 2, `i': 1, `n': 1, `o': 1, `s': 1, `t': 1, `x': 1.
  
- A árvore binária de Hu man será construída de baixo para cima (das folhas para a raiz), começando a partir das letras menos usadas até atingir a raiz. Em cada passo do algoritmo, existe uma coleção de árvores de Human. No início, cada uma das letras forma uma árvore que é composta apenas pela raiz e cujo conteúdo é a
+ A árvore binária de Hu man será construída de baixo para cima (das folhas para a raiz), começando a partir das letras menos usadas até atingir a raiz. Em cada passo do algoritmo, existe uma coleção de árvores de Huffman. No início, cada uma das letras forma uma árvore que é composta apenas pela raiz e cujo conteúdo é a
  frequência com que esta letra ocorre no texto. Em seguida, são escolhidas as duas árvores com as menores frequências associadas e elas são transformadas em uma só árvore cujo valor é a soma do valor destas duas. Este processo é repetido até a alcançar a existência de uma única árvore (veja o algoritmo a seguir e a Figura 1).
 
 
@@ -47,7 +47,7 @@ Temos que as frequências dos caracteres do texto apresentado como exemplo são:
 
  Entrada: Conjunto C com n caracteres
  
-  Saída: Árvore de Human
+  Saída: Árvore de Huffman
 
   1. Q←Conjunto de n árvores formadas por nós com os caracteres em C, e suas respectivas frequências
  2. para (i = 1;i < n; i++) faça
@@ -59,7 +59,7 @@ Temos que as frequências dos caracteres do texto apresentado como exemplo são:
 
 
 #
-A codicação dos caracteres é realizada,associando-se 0 às arestas da árvore de Huffman que ligam um nó com seu lho esquerdo e 1, às arestas que ligam um nó com seu lho direito. O código correspondente a cada letra será formado pelo número binário associado ao caminho da raiz até a folha correspondente. Desta forma, os códigos resultantes da árvore de Human do exemplo são:
+A codicação dos caracteres é realizada,associando-se 0 às arestas da árvore de Huffman que ligam um nó com seu lho esquerdo e 1, às arestas que ligam um nó com seu lho direito. O código correspondente a cada letra será formado pelo número binário associado ao caminho da raiz até a folha correspondente. Desta forma, os códigos resultantes da árvore de Huffman do exemplo são:
 
  `x': 000
  `\n': 0010
@@ -91,7 +91,7 @@ A codicação dos caracteres é realizada,associando-se 0 às arestas da árvore
  (1)
  a frequência dos caracteres do texto; 
  
- (2) a árvore de Human obtida pelo algoritmo
+ (2) a árvore de Huffman obtida pelo algoritmo
  3
 (percurso pré-ordem estudado na disciplina), e 
 
