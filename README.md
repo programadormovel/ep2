@@ -19,14 +19,14 @@ A ideia central é associar números binários com menos bits aos caracteres mai
 
  (1) Cálculo da frequência de cada caractere no texto;
 
- (2) Execução do algoritmo de Human para construção de uma árvore binária
+ (2) Execução do algoritmo de Huffman para construção de uma árvore binária
  (árvore de Human);
 
  (3) Codi cação propriamente dita.
 
- No algoritmo de descompactação usando os códigos de Human são necessárias duas fases:
+ No algoritmo de descompactação usando os códigos de Huffman são necessárias duas fases:
 
- (1) Leitura e reconstrução da árvore de Human;
+ (1) Leitura e reconstrução da árvore de Huffman;
 
  (2) Decodi cação propriamente dita.
 
@@ -77,7 +77,7 @@ A codicação dos caracteres é realizada,associando-se 0 às arestas da árvore
 
 ![Árvore de Huffman](https://github.com/programadormovel/ep2/blob/main/huffman.png)
 
- Figura 1: Árvore de Human
+ Figura 1: Árvore de Huffman
  
  Desta maneira, o arquivo compactado caria (lembre-se que são pseudo-bits):
  01101001010011111001010011011111010101110001110000010
